@@ -29,13 +29,15 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    //executed when view is going to appear
     override func viewWillAppear(animated: Bool) {
         //hide stop button
         stopButton.hidden = true
         //enable record button
         recordButton.enabled = true
     }
-
+    
+    //executed when the record button is pressed
     @IBAction func recordAudio(sender: UIButton) {
         //disable record button
         recordButton.enabled = false
@@ -44,7 +46,7 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         stopButton.hidden = false
         //start recording users' voice
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-        
+        //generate file name for the recording
         let currentDateTime = NSDate()
         let formatter = NSDateFormatter()
         formatter.dateFormat = "ddMMyyyy-HHmmss"
@@ -58,18 +60,22 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
         //initialize and prepare recorder
         audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
+        //delegate AVAudioRecorder in order to use audioRecorderDidFinishRecording function
         audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
-        
     }
     
+    //executed after recording has been finished
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
+        //use flag to indicate if it's successful
         if(flag) {
+            //Do this if recording is successful
             recordedAudio = RecordedAudio(url: recorder.url, title: recorder.url.lastPathComponent!)
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         }else {
+            //Do this if recording is unsuccessful
             println("Recording was not successful")
             recordingInProgress.text = "Tap to Record"
             recordButton.enabled = true
@@ -77,6 +83,7 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         }
     }
     
+    //pass recording file to playSoundsViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "stopRecording") {
             let playSoundsVC:playSoundsViewController = segue.destinationViewController as playSoundsViewController
@@ -84,8 +91,10 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             playSoundsVC.receivedAudio = data
         }
     }
-
+    
+    //executed when the stop button is pressed
     @IBAction func stopRecord(sender: UIButton) {
+        //change text of UILabel
         recordingInProgress.text = "Tap to Record"
         //stop recording users' voice
         audioRecorder.stop()
