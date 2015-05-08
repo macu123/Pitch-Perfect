@@ -36,42 +36,42 @@ class playSoundsViewController: UIViewController {
     
     //play sounds at slow rate
     @IBAction func playSlow(sender: UIButton) {
-        playAudioWithVariableRate(2.0)
+        playAudioWithVariableRate(0.5)
     }
     
     //play sounds at fast rate
     @IBAction func playFast(sender: UIButton) {
-        playAudioWithVariableRate(0.5)
+        playAudioWithVariableRate(2.0)
     }
 
     func playAudioWithVariableRate(rate: Float) {
-        //stop and reset audioEngine to fix the bug
-        audioEngine.stop()
-        audioEngine.reset()
-        
-        //must stop audioPlayer before begins to play everytime
-        audioPlayer.stop()
+        stopaudioPlayerAndEngine()
         audioPlayer.rate = rate
         //set it to the beginning of the audio whenever it begins to play
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
     }
     
+    func stopaudioPlayerAndEngine() {
+        //stop and reset audioEngine to fix the bug
+        audioEngine.stop()
+        audioEngine.reset()
+        //must stop audioPlayer before begins to play everytime
+        audioPlayer.stop()
+    }
+    
     //play sounds at high pitch
     @IBAction func playChipmunk(sender: UIButton) {
-        playAudioWithVariablePitch(2500)
+        playAudioWithVariablePitch(1500)
     }
     
     //play sounds at low pitch
     @IBAction func playDarth(sender: UIButton) {
-        playAudioWithVariablePitch(-2500)
+        playAudioWithVariablePitch(-1500)
     }
     
     func playAudioWithVariablePitch(pitch: Float) {
-        //stop and reset audioEngine whenever it begins to play
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopaudioPlayerAndEngine()
         
         //create audioPlayerNote and attach it to audioEngine
         var audioPlayerNode = AVAudioPlayerNode()
@@ -92,8 +92,7 @@ class playSoundsViewController: UIViewController {
     
     //executed afer the stop button is pressed
     @IBAction func stopPlay(sender: UIButton) {
-        audioPlayer.stop()
-        audioEngine.stop()
+        stopaudioPlayerAndEngine()
     }
 
 }

@@ -31,6 +31,8 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     //executed when view is going to appear
     override func viewWillAppear(animated: Bool) {
+        //change text of UILabel
+        recordingInProgress.text = "Tap to Record"
         //hide stop button
         stopButton.hidden = true
         //enable record button
@@ -94,8 +96,6 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
     //executed when the stop button is pressed
     @IBAction func stopRecord(sender: UIButton) {
-        //change text of UILabel
-        recordingInProgress.text = "Tap to Record"
         //stop recording users' voice
         audioRecorder.stop()
         var audioSession = AVAudioSession.sharedInstance()

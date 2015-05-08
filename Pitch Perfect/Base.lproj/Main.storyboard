@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wc3-np-lNc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wc3-np-lNc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -93,15 +93,6 @@
                                     <action selector="playFast:" destination="Fes-6a-Kbh" eventType="touchUpInside" id="bff-LL-ZVi"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkY-rB-dYF">
-                                <rect key="frame" x="277" y="463" width="50" height="50"/>
-                                <state key="normal" image="stop">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="stopPlay:" destination="Fes-6a-Kbh" eventType="touchUpInside" id="mn7-ih-Aai"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fV0-lq-UDD">
                                 <rect key="frame" x="36" y="322" width="100" height="100"/>
                                 <state key="normal" image="chipmunk">
@@ -120,14 +111,23 @@
                                     <action selector="playDarth:" destination="Fes-6a-Kbh" eventType="touchUpInside" id="s4G-we-cku"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tkY-rB-dYF">
+                                <rect key="frame" x="275" y="507" width="50" height="50"/>
+                                <state key="normal" image="stop">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopPlay:" destination="Fes-6a-Kbh" eventType="touchUpInside" id="mn7-ih-Aai"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="d1l-Sl-BGd" firstAttribute="top" secondItem="POT-dM-kcY" secondAttribute="bottom" constant="178" id="9aY-lv-FQo"/>
                             <constraint firstItem="aHE-m7-kxG" firstAttribute="leading" secondItem="RFX-LB-NFz" secondAttribute="leadingMargin" constant="20" id="Cxr-UK-huy"/>
                             <constraint firstItem="d1l-Sl-BGd" firstAttribute="top" secondItem="fV0-lq-UDD" secondAttribute="bottom" constant="178" id="IPH-47-hcr"/>
+                            <constraint firstItem="d1l-Sl-BGd" firstAttribute="top" secondItem="tkY-rB-dYF" secondAttribute="bottom" constant="43" id="JDQ-f8-SaT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fHi-0G-hQD" secondAttribute="trailing" constant="20" id="N9N-WF-xIM"/>
-                            <constraint firstItem="tkY-rB-dYF" firstAttribute="top" secondItem="mpZ-aS-yZl" secondAttribute="bottom" constant="399" id="NhN-5V-c0F"/>
                             <constraint firstItem="fHi-0G-hQD" firstAttribute="top" secondItem="mpZ-aS-yZl" secondAttribute="bottom" constant="50" id="QbL-bg-CNx"/>
                             <constraint firstItem="fV0-lq-UDD" firstAttribute="leading" secondItem="RFX-LB-NFz" secondAttribute="leadingMargin" constant="20" id="TIK-eW-bYu"/>
                             <constraint firstItem="aHE-m7-kxG" firstAttribute="top" secondItem="mpZ-aS-yZl" secondAttribute="bottom" constant="50" id="XmF-9a-JQc"/>
