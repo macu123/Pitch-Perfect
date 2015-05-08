@@ -45,7 +45,7 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordingInProgress.text = "Recording"
         stopButton.hidden = false
         //start recording users' voice
-        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
         //generate file name for the recording
         let currentDateTime = NSDate()
         let formatter = NSDateFormatter()
@@ -86,8 +86,8 @@ class recordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     //pass recording file to playSoundsViewController
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "stopRecording") {
-            let playSoundsVC:playSoundsViewController = segue.destinationViewController as playSoundsViewController
-            let data = sender as RecordedAudio
+            let playSoundsVC:playSoundsViewController = segue.destinationViewController as! playSoundsViewController
+            let data = sender as! RecordedAudio
             playSoundsVC.receivedAudio = data
         }
     }
